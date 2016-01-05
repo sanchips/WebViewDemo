@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>测试容器调用</title>
+    </head>
+    <body>
+        <div class="main">
+            <button onclick="test2()">获取网页的值</button>
+        </div>
+
+        <script type="text/javascript">
+
+           function test(json){
+               alert(json);
+           }
+
+            function test2(){
+                alert("网页传值给android");
+                window.zrp.command("{'type':1,'text':'hello boy'}");
+            }
+        </script>
+    </body>
+</html>
