@@ -1,13 +1,17 @@
 package com.zrp.webviewdemo;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.zrp.webviewdemo.web.CommonWebActivity;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,5 +28,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        initScheme(getIntent());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        initScheme(intent);
+    }
+
+    private void initScheme(Intent intent) {
+        Log.d(TAG, "initScheme: ---DataString--->" + intent.getDataString());
+        Uri uri = intent.getData();
+        if (uri != null && "zrp_test.net".equals(uri.getHost())) {
+            Log.d(TAG, "initScheme: ---data--->" + uri.getQueryParameter("data"));
+        }
     }
 }
