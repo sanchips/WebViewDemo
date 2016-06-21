@@ -15,3 +15,6 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+# JS交互不进行混淆
+-keep class com.zrp.webviewdemo.web.CommonWebActivity$JavaScriptInterface {*;}
